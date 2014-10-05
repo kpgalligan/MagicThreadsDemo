@@ -18,6 +18,10 @@
             android:label="@string/title_activity_task_demo" >
         </activity>
         <activity
+            android:name=".PersistedTaskDemoActivity"
+            android:label="@string/title_activity_task_demo" >
+        </activity>
+        <activity
             android:name=".OptionsActivity"
             android:label="@string/title_activity_options" >
             <intent-filter>

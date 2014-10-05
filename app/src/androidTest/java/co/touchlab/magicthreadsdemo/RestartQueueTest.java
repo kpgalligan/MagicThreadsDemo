@@ -1,12 +1,8 @@
 package co.touchlab.magicthreadsdemo;
 
-import android.app.Application;
-import android.content.Intent;
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.ApplicationTestCase;
 import android.test.UiThreadTest;
-import android.view.View;
 
 import java.io.File;
 
@@ -15,13 +11,13 @@ import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTas
 import co.touchlab.android.threading.utils.UiThreadContext;
 
 /**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ * Created by kgalligan on 10/4/14.
  */
-public class ApplicationTest extends BaseQueueTest
+public class RestartQueueTest extends BaseQueueTest
 {
     private Handler handler;
-    private PersistedTaskQueue queue;
-    private PersistedTaskQueue.PersistedTaskQueueState persistedTaskQueueState;
+    PersistedTaskQueue queue;
+    PersistedTaskQueue.PersistedTaskQueueState queueState;
 
     @UiThreadTest
     public void testUiThread()
@@ -41,25 +37,36 @@ public class ApplicationTest extends BaseQueueTest
             @Override
             public void run()
             {
-                checkQueueState();
+                restartQueue();
             }
         }, 3000);
     }
 
+    private void restartQueue()
+    {
+        queue.restartQueue();
+        handler.postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                checkQueueState();
+            }
+        }, 3000);
+    }
     private void checkQueueState()
     {
-        persistedTaskQueueState = queue.clearQueue();
-
+        queueState = queue.clearQueue();
     }
 
 
     @Override
     protected void tearDown() throws Exception
     {
-        Thread.sleep(5000);
-        assertEquals(persistedTaskQueueState.getPending().size(), 0);
-        assertEquals(persistedTaskQueueState.getQueued().size(), 3);
-        assertNull(persistedTaskQueueState.getCurrentTask());
+        Thread.sleep(9000);
+        assertEquals(queueState.getPending().size(), 0);
+        assertEquals(queueState.getQueued().size(), 0);
+        assertNull(queueState.getCurrentTask());
 
         super.tearDown();
 

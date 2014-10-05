@@ -24,6 +24,13 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:text="Persisted Task Demo"
+        android:id="@+id/persistedTaskExample"
+        android:onClick="persistedTaskExample"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Double Tap Loader Demo"
         android:onClick="doubleTapLoaderExample"/>
 

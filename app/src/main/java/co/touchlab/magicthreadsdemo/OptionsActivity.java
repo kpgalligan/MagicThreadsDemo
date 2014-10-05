@@ -23,6 +23,11 @@ public class OptionsActivity extends Activity {
         TaskDemoActivity.callMe(this);
     }
 
+    public void persistedTaskExample(View v)
+    {
+        PersistedTaskDemoActivity.callMe(this);
+    }
+
     public void doubleTapLoaderExample(View v)
     {
         DoubleTapLoaderDemoActivity.callMe(this);

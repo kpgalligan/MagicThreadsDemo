@@ -9,6 +9,7 @@
     <integer name="conventionId">2000</integer>
 
     <string name="title_activity_task_demo">TaskDemo</string>
+    <string name="title_activity_persisted_task_demo">PersistedTaskDemo</string>
     <string name="title_activity_options">OptionsActivity</string>
     <string name="title_activity_double_tap_loader_demo">DoubleTapLoaderDemoActivity</string>
 

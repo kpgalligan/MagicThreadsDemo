@@ -25,10 +25,8 @@ public class NullTask extends TaskQueue.Task
     }
 
     @Override
-    protected boolean handleError(Exception e)
+    protected boolean handleError(Throwable e)
     {
         return false;
     }
-
-
 }
