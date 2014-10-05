@@ -11,6 +11,7 @@ import co.touchlab.magicthreadsdemo.OptionsActivity;
 import co.touchlab.magicthreadsdemo.test.NetworkExceptionCommand;
 import co.touchlab.magicthreadsdemo.test.NeverCommand;
 import co.touchlab.magicthreadsdemo.test.TestCommand;
+import co.touchlab.magicthreadsdemo.test.utils.ThreadHelper;
 
 /**
  * Created by kgalligan on 10/4/14.
@@ -31,41 +32,34 @@ public class SecondSaveTest extends ActivityInstrumentationTestCase2<OptionsActi
     protected void setUp() throws Exception
     {
         super.setUp();
+        handler = ThreadHelper.mainHandler();
+
         activity = getActivity();
     }
 
-    @UiThreadTest
     public void testInsertSavedValues()
     {
-        UiThreadContext.assertUiThread();
-
-        handler = new Handler();
-
-        queue = DefaultPersistedTaskQueue.getInstance(getActivity());
+        handler.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                queue = DefaultPersistedTaskQueue.getInstance(getActivity());
+            }
+        });
 
         handler.postDelayed(new Runnable()
         {
             @Override
             public void run()
             {
-                checkQueueState();
+                queueState = queue.copyState();
             }
-        }, 4000);
-    }
+        }, 1200);
 
-    private void checkQueueState()
-    {
-        queueState = queue.copyState();
-    }
-
-    @Override
-    protected void tearDown() throws Exception
-    {
-        Thread.sleep(9000);
+        ThreadHelper.sleep(2000);
         assertEquals(queueState.getPending().size(), 0);
         assertEquals(queueState.getQueued().size(), 2);
         assertNull(queueState.getCurrentTask());
-
-        super.tearDown();
     }
 }

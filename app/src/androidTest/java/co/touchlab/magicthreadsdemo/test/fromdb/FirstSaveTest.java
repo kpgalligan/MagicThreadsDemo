@@ -14,6 +14,7 @@ import co.touchlab.magicthreadsdemo.OptionsActivity;
 import co.touchlab.magicthreadsdemo.test.NetworkExceptionCommand;
 import co.touchlab.magicthreadsdemo.test.NeverCommand;
 import co.touchlab.magicthreadsdemo.test.TestCommand;
+import co.touchlab.magicthreadsdemo.test.utils.ThreadHelper;
 
 /**
  * Created by kgalligan on 10/4/14.
@@ -34,7 +35,7 @@ public class FirstSaveTest extends ActivityInstrumentationTestCase2<OptionsActiv
     protected void setUp() throws Exception
     {
         super.setUp();
-        handler = new Handler(Looper.getMainLooper());
+        handler = ThreadHelper.mainHandler();
 
         File test = getInstrumentation().getTargetContext().getDatabasePath("test");
         File[] files = test.getParentFile().listFiles();
@@ -71,16 +72,9 @@ public class FirstSaveTest extends ActivityInstrumentationTestCase2<OptionsActiv
             {
                 queueState = queue.copyState();
             }
-        }, 1200);
+        }, 2200);
 
-        try
-        {
-            Thread.sleep(2000);
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
+        ThreadHelper.sleep(4000);
         assertEquals(queueState.getPending().size(), 0);
         assertEquals(queueState.getQueued().size(), 4);
         assertNull(queueState.getCurrentTask());

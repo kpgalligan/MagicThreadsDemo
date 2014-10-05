@@ -12,8 +12,13 @@ import co.touchlab.magicthreadsdemo.test.StaticLog;
  */
 public class AddLotsTest extends BaseSimpleQueueTest
 {
-    public static final int BLOCK_COUNT = 200;
+    public static final int BLOCK_COUNT = 70;
     private PersistedTaskQueue.PersistedTaskQueueState stateAfterAdd;
+
+    public AddLotsTest()
+    {
+        super(5000, 8000);
+    }
 
     @Override
     protected void runQueueOps()
