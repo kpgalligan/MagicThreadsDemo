@@ -48,11 +48,16 @@ public abstract class BaseSimpleQueueTest extends BaseQueueTest
     protected void tearDown() throws Exception
     {
         Thread.sleep(7000);
-        asserQueueState();
+        asserQueueState(queueState);
 
         super.tearDown();
 
     }
 
-    protected abstract void asserQueueState();
+    protected abstract void asserQueueState(PersistedTaskQueue.PersistedTaskQueueState endState);
+
+    public PersistedTaskQueue getQueue()
+    {
+        return queue;
+    }
 }

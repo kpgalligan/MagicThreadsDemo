@@ -1,5 +1,7 @@
 package co.touchlab.magicthreadsdemo.test;
 
+import co.touchlab.android.threading.tasks.persisted.PersistedTaskQueue;
+
 /**
  * Created by kgalligan on 10/4/14.
  */
@@ -15,10 +17,10 @@ public class SimpleSimpleQueueTest extends BaseSimpleQueueTest
     }
 
     @Override
-    protected void asserQueueState()
+    protected void asserQueueState(PersistedTaskQueue.PersistedTaskQueueState endState)
     {
-        assertEquals(queueState.getPending().size(), 0);
-        assertEquals(queueState.getQueued().size(), 3);
-        assertNull(queueState.getCurrentTask());
+        assertEquals(endState.getPending().size(), 0);
+        assertEquals(endState.getQueued().size(), 3);
+        assertNull(endState.getCurrentTask());
     }
 }

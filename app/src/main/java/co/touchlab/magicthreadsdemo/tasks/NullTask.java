@@ -19,7 +19,7 @@ public class NullTask extends TaskQueue.Task
     }
 
     @Override
-    protected void onComplete()
+    protected void onComplete(Context context)
     {
         EventBusExt.getDefault().post(this);
     }

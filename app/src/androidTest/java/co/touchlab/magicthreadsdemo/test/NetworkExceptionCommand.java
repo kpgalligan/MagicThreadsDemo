@@ -16,19 +16,7 @@ public class NetworkExceptionCommand extends Command
     private boolean firstRun = true;
 
     @Override
-    public String logSummary()
-    {
-        return null;
-    }
-
-    @Override
-    public boolean same(Command command)
-    {
-        return false;
-    }
-
-    @Override
-    public void callCommand(Context context) throws SoftException, Throwable
+    public void run(Context context) throws SoftException, Throwable
     {
         Log.w("queuetest", "Try and soft fail");
         if(firstRun)
@@ -44,5 +32,11 @@ public class NetworkExceptionCommand extends Command
         UiThreadContext.assertUiThread();
         Log.w("queuetest", "Transient error");
         message = exception.getMessage();
+    }
+
+    @Override
+    public boolean handlePermanentError(Context context, Throwable exception)
+    {
+        return false;
     }
 }
