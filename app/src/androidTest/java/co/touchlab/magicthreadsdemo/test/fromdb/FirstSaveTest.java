@@ -1,6 +1,7 @@
 package co.touchlab.magicthreadsdemo.test.fromdb;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
 
@@ -33,6 +34,8 @@ public class FirstSaveTest extends ActivityInstrumentationTestCase2<OptionsActiv
     protected void setUp() throws Exception
     {
         super.setUp();
+        handler = new Handler(Looper.getMainLooper());
+
         File test = getInstrumentation().getTargetContext().getDatabasePath("test");
         File[] files = test.getParentFile().listFiles();
         for (File file : files)
@@ -43,43 +46,43 @@ public class FirstSaveTest extends ActivityInstrumentationTestCase2<OptionsActiv
         activity = getActivity();
     }
 
-    @UiThreadTest
     public void testInsertSavedValues()
     {
-        UiThreadContext.assertUiThread();
+        handler.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                UiThreadContext.assertUiThread();
 
-        handler = new Handler();
-
-        queue = DefaultPersistedTaskQueue.getInstance(getActivity());
-        queue.execute(new TestCommand());
-        queue.execute(new NetworkExceptionCommand());
-        queue.execute(new TestCommand());
-        queue.execute(new NetworkExceptionCommand());
-        queue.execute(new NeverCommand());
+                queue = DefaultPersistedTaskQueue.getInstance(getActivity());
+                queue.execute(new TestCommand());
+                queue.execute(new NetworkExceptionCommand());
+                queue.execute(new TestCommand());
+                queue.execute(new NetworkExceptionCommand());
+                queue.execute(new NeverCommand());
+            }
+        });
 
         handler.postDelayed(new Runnable()
         {
             @Override
             public void run()
             {
-                checkQueueState();
+                queueState = queue.copyState();
             }
-        }, 3000);
-    }
+        }, 1200);
 
-    private void checkQueueState()
-    {
-        queueState = queue.copyState();
-    }
-
-    @Override
-    protected void tearDown() throws Exception
-    {
-        Thread.sleep(9000);
+        try
+        {
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
         assertEquals(queueState.getPending().size(), 0);
         assertEquals(queueState.getQueued().size(), 4);
         assertNull(queueState.getCurrentTask());
-
-        super.tearDown();
     }
 }

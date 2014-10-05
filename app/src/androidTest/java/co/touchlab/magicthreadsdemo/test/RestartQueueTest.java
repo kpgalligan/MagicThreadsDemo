@@ -53,7 +53,7 @@ public class RestartQueueTest extends BaseQueueTest
     }
     private void checkQueueState()
     {
-        queueState = queue.clearQueue();
+        queueState = queue.copyState();
     }
 
 
