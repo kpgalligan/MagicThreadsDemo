@@ -1,4 +1,4 @@
-package co.touchlab.magicthreadsdemo;
+package co.touchlab.magicthreadsdemo.test;
 
 import android.content.Context;
 import android.util.Log;

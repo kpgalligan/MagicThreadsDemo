@@ -1,13 +1,15 @@
-package co.touchlab.magicthreadsdemo;
+package co.touchlab.magicthreadsdemo.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 
 import java.io.File;
 
+import co.touchlab.magicthreadsdemo.OptionsActivity;
+
 /**
  * Created by kgalligan on 10/4/14.
  */
-public class BaseQueueTest extends ActivityInstrumentationTestCase2<OptionsActivity>
+public abstract class BaseQueueTest extends ActivityInstrumentationTestCase2<OptionsActivity>
 {
     OptionsActivity activity;
 

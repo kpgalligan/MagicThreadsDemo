@@ -1,4 +1,4 @@
-package co.touchlab.magicthreadsdemo;
+package co.touchlab.magicthreadsdemo.test;
 
 /**
  * Created by kgalligan on 10/4/14.

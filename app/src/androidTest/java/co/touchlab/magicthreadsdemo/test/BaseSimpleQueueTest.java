@@ -1,10 +1,7 @@
-package co.touchlab.magicthreadsdemo;
+package co.touchlab.magicthreadsdemo.test;
 
 import android.os.Handler;
-import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
-
-import java.io.File;
 
 import co.touchlab.android.threading.tasks.persisted.PersistedTaskQueue;
 import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTaskQueue;
@@ -13,7 +10,7 @@ import co.touchlab.android.threading.utils.UiThreadContext;
 /**
  * Created by kgalligan on 10/4/14.
  */
-public class RestartQueueTest extends BaseQueueTest
+public abstract class BaseSimpleQueueTest extends BaseQueueTest
 {
     private Handler handler;
     PersistedTaskQueue queue;
@@ -27,24 +24,8 @@ public class RestartQueueTest extends BaseQueueTest
         handler = new Handler();
 
         queue = DefaultPersistedTaskQueue.getInstance(getActivity());
-        queue.execute(new TestCommand());
-        queue.execute(new NetworkExceptionCommand());
-        queue.execute(new TestCommand());
-        queue.execute(new NeverCommand());
+        runQueueOps();
 
-        handler.postDelayed(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                restartQueue();
-            }
-        }, 3000);
-    }
-
-    private void restartQueue()
-    {
-        queue.restartQueue();
         handler.postDelayed(new Runnable()
         {
             @Override
@@ -52,8 +33,11 @@ public class RestartQueueTest extends BaseQueueTest
             {
                 checkQueueState();
             }
-        }, 3000);
+        }, 5000);
     }
+
+    protected abstract void runQueueOps();
+
     private void checkQueueState()
     {
         queueState = queue.clearQueue();
@@ -63,12 +47,12 @@ public class RestartQueueTest extends BaseQueueTest
     @Override
     protected void tearDown() throws Exception
     {
-        Thread.sleep(9000);
-        assertEquals(queueState.getPending().size(), 0);
-        assertEquals(queueState.getQueued().size(), 0);
-        assertNull(queueState.getCurrentTask());
+        Thread.sleep(7000);
+        asserQueueState();
 
         super.tearDown();
 
     }
+
+    protected abstract void asserQueueState();
 }
