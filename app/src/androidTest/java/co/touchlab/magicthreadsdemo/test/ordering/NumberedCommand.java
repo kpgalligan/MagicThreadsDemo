@@ -25,7 +25,7 @@ public class NumberedCommand extends Command
     @Override
     public void run(Context context) throws SoftException, Throwable
     {
-        Log.i("Lots", "Numbered: "+ commandCount);
+        Log.i("Lots", "Numbered (static): "+ commandCount +"/time: "+ getAdded() +"/tie: "+ getOrderTie());
     }
 
     @Override

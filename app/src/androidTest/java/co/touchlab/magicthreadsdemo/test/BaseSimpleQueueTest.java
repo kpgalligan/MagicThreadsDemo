@@ -33,7 +33,7 @@ public abstract class BaseSimpleQueueTest extends BaseQueueTest
             {
                 checkQueueState();
             }
-        }, 5000);
+        }, 15000);
     }
 
     protected abstract void runQueueOps();
@@ -47,7 +47,7 @@ public abstract class BaseSimpleQueueTest extends BaseQueueTest
     @Override
     protected void tearDown() throws Exception
     {
-        Thread.sleep(7000);
+        Thread.sleep(30000);
         asserQueueState(queueState);
 
         super.tearDown();
