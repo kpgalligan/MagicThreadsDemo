@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import co.touchlab.android.threading.eventbus.EventBusExt;
-import co.touchlab.android.threading.tasks.TaskQueryTasksOfType;
 import co.touchlab.android.threading.tasks.TaskQueue;
+import co.touchlab.android.threading.tasks.utils.TaskQueueHelper;
 import co.touchlab.magicthreadsdemo.tasks.NullTask;
 
 
@@ -63,8 +63,7 @@ public class TaskDemoActivity extends Activity
 
     private void checkRunning()
     {
-        TaskQueryTasksOfType queueQuery = new TaskQueryTasksOfType(NullTask.class);
-        TaskQueue.loadQueueDefault().query(queueQuery);
-        doThing.setEnabled(!queueQuery.found);
+        boolean found = TaskQueueHelper.hasTasksOfType(TaskQueue.loadQueueDefault(), NullTask.class);
+        doThing.setEnabled(!found);
     }
 }
