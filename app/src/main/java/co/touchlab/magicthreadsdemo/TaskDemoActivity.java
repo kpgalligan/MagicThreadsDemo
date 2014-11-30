@@ -50,7 +50,7 @@ public class TaskDemoActivity extends Activity
 
     private void sendTask()
     {
-        TaskQueue.execute(this, new NullTask());
+        TaskQueue.loadQueueDefault(this).execute(new NullTask());
         checkRunning();
     }
 
@@ -63,7 +63,7 @@ public class TaskDemoActivity extends Activity
 
     private void checkRunning()
     {
-        boolean found = TaskQueueHelper.hasTasksOfType(TaskQueue.loadQueueDefault(), NullTask.class);
+        boolean found = TaskQueueHelper.hasTasksOfType(TaskQueue.loadQueueDefault(this), NullTask.class);
         doThing.setEnabled(!found);
     }
 }

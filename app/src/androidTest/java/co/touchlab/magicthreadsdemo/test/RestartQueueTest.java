@@ -1,12 +1,7 @@
 package co.touchlab.magicthreadsdemo.test;
 
-import android.media.ThumbnailUtils;
-import android.os.Handler;
-import android.test.UiThreadTest;
-
 import co.touchlab.android.threading.tasks.persisted.PersistedTaskQueue;
 import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTaskQueue;
-import co.touchlab.android.threading.utils.UiThreadContext;
 import co.touchlab.magicthreadsdemo.test.utils.ThreadHelper;
 
 /**
@@ -57,7 +52,7 @@ public class RestartQueueTest extends BaseQueueTest
 
     private void checkQueueState()
     {
-        queueState = queue.copyState();
+        queueState = queue.copyPersistedState();
     }
 
 

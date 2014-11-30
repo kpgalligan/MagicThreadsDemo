@@ -35,7 +35,7 @@ public class NetworkExceptionCommand extends Command
     }
 
     @Override
-    public boolean handlePermanentError(Context context, Throwable exception)
+    public boolean handleError(Context context, Throwable exception)
     {
         return false;
     }

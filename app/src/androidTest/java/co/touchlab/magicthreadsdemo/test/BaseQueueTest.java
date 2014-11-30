@@ -36,9 +36,12 @@ public abstract class BaseQueueTest extends ActivityInstrumentationTestCase2<Opt
     {
         File test = getInstrumentation().getTargetContext().getDatabasePath("test");
         File[] files = test.getParentFile().listFiles();
-        for (File file : files)
+        if(files != null)
         {
-            file.delete();
+            for(File file : files)
+            {
+                file.delete();
+            }
         }
     }
 }

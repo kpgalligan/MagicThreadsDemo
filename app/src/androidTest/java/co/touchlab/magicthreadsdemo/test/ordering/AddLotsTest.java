@@ -3,7 +3,6 @@ package co.touchlab.magicthreadsdemo.test.ordering;
 import android.util.Log;
 
 import co.touchlab.android.threading.tasks.persisted.PersistedTaskQueue;
-import co.touchlab.magicthreadsdemo.test.BaseQueueTest;
 import co.touchlab.magicthreadsdemo.test.BaseSimpleQueueTest;
 import co.touchlab.magicthreadsdemo.test.StaticLog;
 
@@ -33,7 +32,7 @@ public class AddLotsTest extends BaseSimpleQueueTest
 
         addABunch(queue, entryCount);
 
-        stateAfterAdd = queue.copyState();
+        stateAfterAdd = queue.copyPersistedState();
     }
 
     private void addABunch(PersistedTaskQueue queue, int entryCount)
@@ -47,7 +46,7 @@ public class AddLotsTest extends BaseSimpleQueueTest
     @Override
     protected void asserQueueState(PersistedTaskQueue.PersistedTaskQueueState endState)
     {
-        assertEquals(stateAfterAdd.getPending().size(), (BLOCK_COUNT * 2) + 1);
+        assertEquals(stateAfterAdd.getAdding().size(), (BLOCK_COUNT * 2) + 1);
         assertEquals(stateAfterAdd.getQueued().size(), 0);
 
         assertEquals(endState.getPending().size(), 0);

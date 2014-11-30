@@ -41,7 +41,7 @@ public class ApplicationTest extends BaseQueueTest
 
     private void checkQueueState()
     {
-        persistedTaskQueueState = queue.copyState();
+        persistedTaskQueueState = queue.copyPersistedState();
 
     }
 

@@ -2,15 +2,10 @@ package co.touchlab.magicthreadsdemo.test.fromdb;
 
 import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.UiThreadTest;
 
 import co.touchlab.android.threading.tasks.persisted.PersistedTaskQueue;
 import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTaskQueue;
-import co.touchlab.android.threading.utils.UiThreadContext;
 import co.touchlab.magicthreadsdemo.OptionsActivity;
-import co.touchlab.magicthreadsdemo.test.NetworkExceptionCommand;
-import co.touchlab.magicthreadsdemo.test.NeverCommand;
-import co.touchlab.magicthreadsdemo.test.TestCommand;
 import co.touchlab.magicthreadsdemo.test.utils.ThreadHelper;
 
 /**
@@ -53,7 +48,7 @@ public class SecondSaveTest extends ActivityInstrumentationTestCase2<OptionsActi
             @Override
             public void run()
             {
-                queueState = queue.copyState();
+                queueState = queue.copyPersistedState();
             }
         }, 1200);
 

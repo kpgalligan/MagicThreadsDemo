@@ -12,7 +12,7 @@ import co.touchlab.android.threading.tasks.persisted.Command;
 public class TestCommand extends Command
 {
     @Override
-    public boolean handlePermanentError(Context context, Throwable exception)
+    public boolean handleError(Context context, Throwable exception)
     {
         return false;
     }

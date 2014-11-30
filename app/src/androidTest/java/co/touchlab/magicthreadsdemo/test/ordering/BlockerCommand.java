@@ -17,7 +17,7 @@ public class BlockerCommand extends Command
     }
 
     @Override
-    public boolean handlePermanentError(Context context, Throwable exception)
+    protected boolean handleError(Context context, Throwable e)
     {
         return false;
     }

@@ -1,11 +1,7 @@
 package co.touchlab.magicthreadsdemo.test;
 
-import android.os.Handler;
-import android.test.UiThreadTest;
-
 import co.touchlab.android.threading.tasks.persisted.PersistedTaskQueue;
 import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTaskQueue;
-import co.touchlab.android.threading.utils.UiThreadContext;
 import co.touchlab.magicthreadsdemo.test.utils.ThreadHelper;
 
 /**
@@ -59,7 +55,7 @@ public abstract class BaseSimpleQueueTest extends BaseQueueTest
 
     private void checkQueueState()
     {
-        queueState = queue.copyState();
+        queueState = queue.copyPersistedState();
     }
 
     protected abstract void asserQueueState(PersistedTaskQueue.PersistedTaskQueueState endState);
