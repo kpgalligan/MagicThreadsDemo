@@ -5,18 +5,25 @@ import android.content.Context;
 import co.touchlab.android.threading.eventbus.EventBusExt;
 import co.touchlab.android.threading.tasks.Task;
 import co.touchlab.android.threading.tasks.TaskQueue;
+import co.touchlab.android.threading.tasks.sticky.StickyTask;
+import co.touchlab.android.threading.tasks.sticky.StickyTaskManager;
 
 /**
  * This does nothing, really.
  *
  * Created by kgalligan on 9/13/14.
  */
-public class NullTask extends Task
+public class NullTask extends StickyTask
 {
+    public NullTask(StickyTaskManager taskManager)
+    {
+        super(taskManager);
+    }
+
     @Override
     protected void run(Context context) throws Exception
     {
-//        Thread.sleep(5000);
+        Thread.sleep(5000);
     }
 
     @Override

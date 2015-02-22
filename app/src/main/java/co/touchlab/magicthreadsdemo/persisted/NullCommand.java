@@ -25,4 +25,6 @@ public class NullCommand extends Command
         Thread.sleep(5000);
         EventBusExt.getDefault().post(this);
     }
+
+
 }

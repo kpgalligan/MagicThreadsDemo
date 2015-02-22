@@ -36,7 +36,6 @@ public class PersistedTaskDemoActivity extends Activity
                 sendTask();
             }
         });
-        checkRunning();
     }
 
     @Override
@@ -49,20 +48,12 @@ public class PersistedTaskDemoActivity extends Activity
     private void sendTask()
     {
         DefaultPersistedTaskQueue.getInstance(this).execute(new NullCommand());
-        checkRunning();
     }
 
     @SuppressWarnings("UnusedDeclaration")
     public void onEventMainThread(NullCommand task)
     {
-        checkRunning();
         findViewById(R.id.taskDone).setVisibility(View.VISIBLE);
     }
 
-    private void checkRunning()
-    {
-//        TaskQueryTasksOfType queueQuery = new TaskQueryTasksOfType(NullTask.class);
-//        TaskQueue.loadQueueDefault().query(queueQuery);
-//        doThing.setEnabled(!queueQuery.found);
-    }
 }
