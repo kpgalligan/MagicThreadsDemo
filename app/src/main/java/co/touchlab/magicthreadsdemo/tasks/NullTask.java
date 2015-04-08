@@ -3,8 +3,6 @@ package co.touchlab.magicthreadsdemo.tasks;
 import android.content.Context;
 
 import co.touchlab.android.threading.eventbus.EventBusExt;
-import co.touchlab.android.threading.tasks.Task;
-import co.touchlab.android.threading.tasks.TaskQueue;
 import co.touchlab.android.threading.tasks.sticky.StickyTask;
 import co.touchlab.android.threading.tasks.sticky.StickyTaskManager;
 

@@ -8,6 +8,7 @@ import android.view.View;
 import co.touchlab.android.threading.eventbus.EventBusExt;
 import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTaskQueue;
 import co.touchlab.magicthreadsdemo.persisted.NullCommand;
+import co.touchlab.magicthreadsdemo.persisted.PersistedTaskQueueFactory;
 
 public class PersistedTaskDemoActivity extends Activity
 {
@@ -17,8 +18,6 @@ public class PersistedTaskDemoActivity extends Activity
         a.startActivity(i);
     }
 
-    private View doThing;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -27,7 +26,7 @@ public class PersistedTaskDemoActivity extends Activity
 
         EventBusExt.getDefault().register(this);
 
-        doThing = findViewById(R.id.doThing);
+        View doThing = findViewById(R.id.doThing);
         doThing.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -47,7 +46,7 @@ public class PersistedTaskDemoActivity extends Activity
 
     private void sendTask()
     {
-        DefaultPersistedTaskQueue.getInstance(this).execute(new NullCommand());
+        PersistedTaskQueueFactory.getInstance(this).execute(new NullCommand());
     }
 
     @SuppressWarnings("UnusedDeclaration")

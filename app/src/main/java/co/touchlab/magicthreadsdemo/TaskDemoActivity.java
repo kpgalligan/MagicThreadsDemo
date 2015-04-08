@@ -10,7 +10,6 @@ import co.touchlab.android.threading.tasks.TaskQueue;
 import co.touchlab.android.threading.tasks.sticky.StickyTaskManager;
 import co.touchlab.android.threading.tasks.utils.TaskQueueHelper;
 import co.touchlab.magicthreadsdemo.tasks.NullTask;
-import co.touchlab.magicthreadsdemo.tasks.SaveFileTask;
 
 
 public class TaskDemoActivity extends Activity

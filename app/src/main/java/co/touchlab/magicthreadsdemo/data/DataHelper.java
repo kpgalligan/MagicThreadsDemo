@@ -3,7 +3,6 @@ package co.touchlab.magicthreadsdemo.data;
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import co.touchlab.android.threading.errorcontrol.NetworkException;
 import co.touchlab.magicthreadsdemo.R;

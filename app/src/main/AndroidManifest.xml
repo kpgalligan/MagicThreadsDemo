@@ -34,6 +34,12 @@
             android:name=".DoubleTapLoaderDemoActivity"
             android:label="@string/title_activity_double_tap_loader_demo" >
         </activity>
+
+        <service
+            android:name="co.touchlab.android.threading.tasks.helper.KeepAliveService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
