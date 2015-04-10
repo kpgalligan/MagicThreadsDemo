@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import co.touchlab.android.threading.eventbus.EventBusExt;
-import co.touchlab.android.threading.tasks.persisted.storage.DefaultPersistedTaskQueue;
 import co.touchlab.magicthreadsdemo.persisted.NullCommand;
 import co.touchlab.magicthreadsdemo.persisted.PersistedTaskQueueFactory;
 
