@@ -10,10 +10,6 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".LoaderDemoActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
             android:name=".TaskDemoActivity"
             android:label="@string/title_activity_task_demo" >
         </activity>
@@ -29,10 +25,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".DoubleTapLoaderDemoActivity"
-            android:label="@string/title_activity_double_tap_loader_demo" >
         </activity>
 
         <service

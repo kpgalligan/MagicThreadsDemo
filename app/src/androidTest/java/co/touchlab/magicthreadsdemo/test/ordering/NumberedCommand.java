@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.Log;
 
 import co.touchlab.android.threading.errorcontrol.SoftException;
-import co.touchlab.android.threading.tasks.persisted.Command;
+import co.touchlab.android.threading.tasks.persisted.PersistedTask;
 
 /**
  * Created by kgalligan on 10/5/14.
  */
-public class NumberedCommand extends Command
+public class NumberedCommand extends PersistedTask
 {
     int commandCount;
 

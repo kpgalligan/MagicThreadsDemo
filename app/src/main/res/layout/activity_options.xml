@@ -12,12 +12,6 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Loader Demo"
-        android:onClick="loaderExample"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:text="Task Demo"
         android:onClick="taskExample"/>
 
@@ -28,10 +22,5 @@
         android:id="@+id/persistedTaskExample"
         android:onClick="persistedTaskExample"/>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Double Tap Loader Demo"
-        android:onClick="doubleTapLoaderExample"/>
 
 </LinearLayout>

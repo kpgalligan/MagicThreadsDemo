@@ -25,7 +25,6 @@ public class FirstSaveTest extends ApplicationTestCase<DemoApplication>
         super(DemoApplication.class);
     }
 
-    OptionsActivity activity;
     private Handler handler;
     PersistedTaskQueue queue;
     PersistedTaskQueue.PersistedTaskQueueState queueState;

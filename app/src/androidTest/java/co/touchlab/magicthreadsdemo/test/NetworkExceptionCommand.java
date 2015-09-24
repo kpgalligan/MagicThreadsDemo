@@ -4,13 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import co.touchlab.android.threading.errorcontrol.SoftException;
-import co.touchlab.android.threading.tasks.persisted.Command;
+import co.touchlab.android.threading.tasks.persisted.PersistedTask;
 import co.touchlab.android.threading.utils.UiThreadContext;
 
 /**
  * Created by kgalligan on 10/4/14.
  */
-public class NetworkExceptionCommand extends Command
+public class NetworkExceptionCommand extends PersistedTask
 {
     public String message;
     private boolean firstRun = true;

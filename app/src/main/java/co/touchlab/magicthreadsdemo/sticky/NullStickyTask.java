@@ -1,4 +1,4 @@
-package co.touchlab.magicthreadsdemo.tasks;
+package co.touchlab.magicthreadsdemo.sticky;
 
 import android.content.Context;
 
@@ -12,11 +12,11 @@ import co.touchlab.android.threading.tasks.sticky.StickyTaskManager;
  *
  * Created by kgalligan on 9/13/14.
  */
-public class NullTask extends Task
+public class NullStickyTask extends StickyTask
 {
-    public NullTask()
+    public NullStickyTask(StickyTaskManager taskManager)
     {
-        super();
+        super(taskManager);
     }
 
     @Override

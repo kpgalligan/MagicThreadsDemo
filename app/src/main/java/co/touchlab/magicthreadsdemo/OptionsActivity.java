@@ -13,10 +13,6 @@ public class OptionsActivity extends Activity {
         setContentView(R.layout.activity_options);
     }
 
-    public void loaderExample(View v)
-    {
-        LoaderDemoActivity.callMe(this);
-    }
 
     public void taskExample(View v)
     {
@@ -28,8 +24,5 @@ public class OptionsActivity extends Activity {
         PersistedTaskDemoActivity.callMe(this);
     }
 
-    public void doubleTapLoaderExample(View v)
-    {
-        DoubleTapLoaderDemoActivity.callMe(this);
-    }
+    
 }

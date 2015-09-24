@@ -141,7 +141,7 @@ public class HeadlessTestCase extends AndroidTestCase
         TaskQueue.loadQueueDefault(getContext()).query(new BaseTaskQueue.QueueQuery()
         {
             @Override
-            public void query(Task task)
+            public void query(BaseTaskQueue queue, Task task)
             {
                 innerCount.addAndGet(1);
             }

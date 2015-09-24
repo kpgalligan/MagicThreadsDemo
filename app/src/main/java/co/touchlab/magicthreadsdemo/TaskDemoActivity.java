@@ -9,6 +9,7 @@ import co.touchlab.android.threading.eventbus.EventBusExt;
 import co.touchlab.android.threading.tasks.TaskQueue;
 import co.touchlab.android.threading.tasks.sticky.StickyTaskManager;
 import co.touchlab.android.threading.tasks.utils.TaskQueueHelper;
+import co.touchlab.magicthreadsdemo.sticky.NullStickyTask;
 import co.touchlab.magicthreadsdemo.tasks.NullTask;
 
 
@@ -64,12 +65,12 @@ public class TaskDemoActivity extends Activity
 
     private void sendTask()
     {
-        TaskQueue.loadQueueDefault(this).execute(new NullTask(stickyTaskManager));
+        TaskQueue.loadQueue(this, "network").execute(new NullStickyTask(stickyTaskManager));
         checkRunning();
     }
 
     @SuppressWarnings("UnusedDeclaration")
-    public void onEventMainThread(NullTask task)
+    public void onEventMainThread(NullStickyTask task)
     {
         if(stickyTaskManager.isTaskForMe(task))
         {
